@@ -15,16 +15,6 @@ const InputLabel = forwardRef(({}, ref) => {
                     type="text"
                     placeholder="Enter The Label"
                 />
-
-                {/* <input
-                    ref={ref.UserPlaceHolder}
-                    className={inputFieldClass}
-                    type="text"
-                    placeholder="Enter The Place Holder"
-                /> */}
-                {/* <button className="bg-blue-400 rounded-md shadow-lg shadow-rose-200 flex justify-between p-4 w-4/12" onClick={handleSave}> SAVE <PiArrowRightBold />
-                </button> */}
-
             </p>
         </>
     );

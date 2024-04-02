@@ -1,7 +1,8 @@
 import { v4 as uuidv4 } from 'uuid';
 import Elements from './Elements';
 
-const SideBar = ({ dragable, binnedItems }) => {
+//& Component For Displaying Side Component
+const SideBar = ({ dragable, dropable }) => {
 
     return (
         <aside className="w-1/3 px-8 py-16 bg-stone-900 text-stone-50 md:w-72 rounded-r-xl text-center">
@@ -12,10 +13,11 @@ const SideBar = ({ dragable, binnedItems }) => {
             <ul className='flex flex-col gap-2'>
                 {
                     dragable.map((item) =>
+                        // * Passing Items To Element Component For Making Them 
                         <Elements
                             key={uuidv4()}
                             item={item}
-                            binnedItems={binnedItems}
+                            dropable={dropable}
                         />)
                 }
             </ul>

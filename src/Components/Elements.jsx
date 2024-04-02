@@ -1,11 +1,7 @@
-import { useRef } from "react"
 import { useDrag } from "react-dnd"
-// import Modal from "./DialogModal/Modal"
-// import InputLabel from "./InputLabel"
 
-const Elements = ({ item, binnedItems }) => {
-
-    // const modal = useRef()
+//& Component Making Items Dragable And Dropable
+const Elements = ({ item, dropable }) => {
 
     const [{ isDragging }, drag] = useDrag(() => ({
         type: 'element',
@@ -13,9 +9,7 @@ const Elements = ({ item, binnedItems }) => {
         end: (item, moniter) => {
             const dropResult = moniter.getDropResult()
             if (item && dropResult) {
-                // alert(`You Threw ${element.name} in ${dropResult.name}`)
-                // modal.current.open();
-                let tempList = binnedItems;
+                let tempList = dropable;
                 tempList.push(item.name)
             }
         },
@@ -26,12 +20,6 @@ const Elements = ({ item, binnedItems }) => {
 
     return (
         <>
-            {/* <Modal ref={modal} btnCaption="Close">
-                <h2 className="text-xl font-bold text-red-700 my-4">INFO</h2>
-                <ul>
-                    <InputLabel />
-                </ul>
-            </Modal> */}
             <li ref={drag}>
                 {item}
             </li>
