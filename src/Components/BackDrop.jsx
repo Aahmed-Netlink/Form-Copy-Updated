@@ -1,14 +1,14 @@
-import React, { useRef, useState } from 'react'
+import React, { forwardRef, useRef, useState } from 'react'
 import { useDrop } from 'react-dnd'
 import Modal from './DialogModal/Modal'
-import InputLabel from './InputLabel'
+import InputLabel from './InformationComponent/InputLabel'
 
-const BackDrop = ({ binnedItems }) => {
-    const modal = useRef()
+const BackDrop = forwardRef(({ binnedItems }, ref) => {
+    // const modal = useRef()
     const [{ isOver, canDrop }, drop] = useDrop(() => ({
         accept: 'element',
         // drop: () => ({ name: 'the bin' }),
-        drop: () => ({ name: 'the bin' }),
+        drop: () => (ref.current.open()),
         collect: (moniter) => (
             {
                 isOver: !!moniter.isOver(),
@@ -17,18 +17,18 @@ const BackDrop = ({ binnedItems }) => {
         )
     }))
 
-    if (can) {
-        modal.current.open()
-    }
+    // if (can) {
+    //     modal.current.open()
+    // }
 
     return (
         <>
-            <Modal ref={modal} btnCaption="Close">
+            {/* <Modal ref={modal} btnCaption="Close">
                 <h2 className="text-xl font-bold text-red-700 my-4">INFO</h2>
                 <ul>
                     <InputLabel />
                 </ul>
-            </Modal>
+            </Modal> */}
             <div className=" text-center w-10/12 rounded-r-xl px-8 py-16 bg-[#008F8C]" ref={drop}>
                 <h2 className='mb-8 font-bold uppercase md:text-xl text-stone-200 font-sans'>
                     BackDrop
@@ -43,6 +43,6 @@ const BackDrop = ({ binnedItems }) => {
         </>
 
     )
-}
+})
 
 export default BackDrop
