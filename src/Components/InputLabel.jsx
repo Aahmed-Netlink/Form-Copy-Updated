@@ -1,30 +1,34 @@
-import { useRef } from "react";
+import { forwardRef, useRef, useState } from "react";
 import Modal from "./DialogModal/Modal";
 import { PiArrowRightBold } from "react-icons/pi";
 
-const InputLabel = ({ label }) => {
-    const task = useRef();
+const InputLabel = forwardRef(({ }, ref) => {
+
+    const userLabel = useRef();
     const modal = useRef();
+
+    const [valuestate, setvaluestate] = useState([
+        {
+            placeholder: [],
+            label: [],
+        }
+    ])
+
     {/* //! making a fuction to save the value of the user input in an object*/ }
     const handleSave = () => {
-        const enteredTask = task.current.value;
+        const enteredLabel = userLabel.current.value
         document.getElementById('id').value = '';
-        //? Validating the user input Data
-        if (enteredTask.trim() === '') {
-            modal.current.open();
-            return;
-        }
-        else if (label.some((value) => value.value === enteredTask)) {
-            console.log(label)
-            modal.current.open();
-            return;
-        }
-        onAdd(
-            {
-                value: enteredTask,
+        setvaluestate(
+            () => {
+                return {
+                    placeholder: [enteredLabel],
+                }
             }
         )
     }
+
+    console.log(valuestate.placeholder)
+
     const inputFieldClass = "border-y-[0.2rem] border-l-[0.2rem] rounded-l-md border-sky-100 h-12 shadow-lg shadow-rose-200 px-2 w-[30rem] text-stone-600 focus:outline-none focus:border-yellow-400";
     const classes = "text-stone-600 mb-4";
     return (
@@ -35,16 +39,22 @@ const InputLabel = ({ label }) => {
             </Modal>
             <p className="flex m-4 justify-center w-2/3">
                 {/* //! Taking the user input with input filed and passing it with refrence */}
+
                 <input
                     id="id"
-                    ref={task}
+                    ref={userLabel}
                     className={inputFieldClass}
                     type="text"
-                    placeholder="Enter the task" />
-                <button className="bg-blue-400 px-8 py-2 rounded-r-md shadow-lg shadow-rose-200 " onClick={handleSave}><PiArrowRightBold /></button>
+                    placeholder="Enter The Label"
+                />
+
+                <button className="bg-blue-400 px-8 py-2 rounded-r-md shadow-lg shadow-rose-200" onClick={handleSave}>
+                    <PiArrowRightBold />
+                </button>
+
             </p>
         </>
     );
-}
+})
 
 export default InputLabel

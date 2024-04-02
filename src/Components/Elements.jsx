@@ -1,7 +1,7 @@
 import { useRef } from "react"
 import { useDrag } from "react-dnd"
 import Modal from "./DialogModal/Modal"
-// import InputLabel from "./InputLabel"
+import InputLabel from "./InputLabel"
 
 const Elements = ({ element, binnedItems }) => {
 
@@ -29,24 +29,13 @@ const Elements = ({ element, binnedItems }) => {
             <Modal ref={modal} btnCaption="Close">
                 <h2 className="text-xl font-bold text-red-700 my-4">INFO</h2>
                 <ul>
-                    <li>
-                        <label> Enter The Label </label>
-                        <br />
-                        <input type="text" className="border-2 border-blue-500" />
-                    </li>
-                    <li>
-                        <label> Enter The Palceholder </label>
-                        <br />
-                        <input type="text" className="border-2 border-blue-500" />
-                        {/* <InputLabel/> */}
-                    </li>
+                    <InputLabel />
                 </ul>
             </Modal>
             <li ref={drag}>
                 {element}
             </li>
         </>
-
     )
 }
 

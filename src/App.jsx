@@ -1,22 +1,45 @@
+import { useState, useEffect, useRef } from "react";
 import { DndProvider } from "react-dnd"
 import { HTML5Backend } from "react-dnd-html5-backend"
-import BackDrop from "./Components/BackDrop"
-import { useState } from "react";
-import SideBar from "./Components/SideBar";
 
+import items from "./Components/Dragable";
+import BackDrop from "./Components/BackDrop"
+import SideBar from "./Components/SideBar";
 function App() {
-  const [value,setvalue] = useState([
-    {
-      placeholder: [],
-      label: [],
-    }
-  ])
+  //! States
+
+  const [dragable, setDragable] = useState([])
+  useEffect(() => {
+    setDragable(items)
+  }, [])
+
   const [binnedItems, setbinnedItems] = useState([])
-  console.log("I am In App Jsx File" + binnedItems)
+
+  // const [valuestate, setvaluestate] = useState([
+  //   {
+  //     placeholder: [],
+  //     label: [],
+  //   }
+  // ])
+
+  // const userLabel = useRef();
+
+  // const handleSave = () => {
+  //   setvaluestate(
+  //     () => {
+  //       return {
+  //         placeholder: [userLabel.current.value],
+  //       }
+  //     }
+  //   )
+  // }
+
+  //~ Consoling values for checking
+
   return (
     <DndProvider backend={HTML5Backend}>
-      <main className="h-screen my-8 flex gap-4 mx-1">
-        <SideBar binnedItems={binnedItems} />
+      <main className="h-screen my-8 flex gap-4 mx-1 min-w-[650px]">
+        <SideBar dragable={dragable} binnedItems={binnedItems} />
         <BackDrop binnedItems={binnedItems} />
       </main>
     </DndProvider>

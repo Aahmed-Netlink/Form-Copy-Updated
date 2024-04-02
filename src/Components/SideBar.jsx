@@ -1,13 +1,8 @@
 import { v4 as uuidv4 } from 'uuid';
-import items from './Dragable';
 import Elements from './Elements';
-import { useState, useEffect } from "react";
 
-const SideBar = ({ binnedItems, label }) => {
-    const [dragable, setDragable] = useState([])
-    useEffect(() => {
-        setDragable(items)
-    }, [])
+const SideBar = ({ dragable, binnedItems }) => {
+
     return (
         <aside className="w-1/3 px-8 py-16 bg-stone-900 text-stone-50 md:w-72 rounded-r-xl text-center">
             <h2
@@ -20,7 +15,6 @@ const SideBar = ({ binnedItems, label }) => {
                         key={uuidv4()}
                         element={item}
                         binnedItems={binnedItems}
-                        label={label}
                     />)
                 }
             </ul>
