@@ -5,6 +5,7 @@ import { HTML5Backend } from "react-dnd-html5-backend"
 import items from "./Components/Dragable";
 import BackDrop from "./Components/BackDrop"
 import SideBar from "./Components/SideBar";
+import InputLabel from "./Components/InputLabel";
 function App() {
   //! States
 
@@ -42,6 +43,9 @@ function App() {
         <SideBar dragable={dragable} binnedItems={binnedItems} />
         <BackDrop binnedItems={binnedItems} />
       </main>
+      <div>
+        <InputLabel />
+      </div>
     </DndProvider>
   )
 }

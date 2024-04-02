@@ -11,11 +11,12 @@ const SideBar = ({ dragable, binnedItems }) => {
             </h2>
             <ul className='flex flex-col gap-2'>
                 {
-                    dragable.map((item) => <Elements
-                        key={uuidv4()}
-                        element={item}
-                        binnedItems={binnedItems}
-                    />)
+                    dragable.map((item) =>
+                        <Elements
+                            key={uuidv4()}
+                            item={item}
+                            binnedItems={binnedItems}
+                        />)
                 }
             </ul>
         </aside>
