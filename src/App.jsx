@@ -86,6 +86,7 @@ function App() {
           <h2 className="text-xl font-bold text-red-700 my-4">INFO</h2>
           <ul>
             <InputLabel ref={userLabel} />
+            <p className="text-red-500 m-5">For Button You Can Left Label Field</p>
             <InputPlaceHolder ref={userPlaceHolder} />
           </ul>
         </Modal>
