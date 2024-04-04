@@ -23,7 +23,15 @@ const BackDrop = forwardRef(({ dropable }, ref) => {
                 <p className="text-stone-200 mb-4 text-3xl">Drag An Element To Get Started<sup className='text-red-600 text-3xl'>*</sup></p>
                 <form>
                     <ul className='flex flex-col gap-2 items-center'>
-                        {dropable.map((item, i) => <li className='mt-3' key={i}>{item}</li>)}
+                        {dropable.itemList.map((item ,i) => (
+                            <ul key={i} className=' inline-flex '>
+                                <label className='whitespace-pre text-xl font-semibold capitalize text-slate-900'>
+                                    {dropable.label[i]}{"  "}
+                                </label>
+                                <>{item}</>
+                            </ul>
+                        ))
+                        }
                     </ul>
                 </form>
             </div>

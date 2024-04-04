@@ -1,5 +1,4 @@
-import { Button,} from 'antd';
-
+import { Button } from 'antd';
 const Buttons = () => {
     return (
         <Button type="primary">Primary Button</Button>

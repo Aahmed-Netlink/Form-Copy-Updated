@@ -5,7 +5,7 @@ const { TextArea } = Input;
 
 const TextAreas = () => {
     return (
-        <div><TextArea rows={4}/></div>
+        <TextArea rows={4} />
     )
 }
 

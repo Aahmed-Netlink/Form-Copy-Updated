@@ -17,7 +17,7 @@ const SideBar = ({ dragable, dropable }) => {
                         <Elements
                             key={uuidv4()}
                             item={item}
-                            dropable={dropable}
+                            dropable={dropable.itemList}
                         />)
                 }
             </ul>

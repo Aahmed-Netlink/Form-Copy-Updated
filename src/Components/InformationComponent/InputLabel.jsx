@@ -10,6 +10,7 @@ const InputLabel = forwardRef(({}, ref) => {
                 {/* //! Taking the user input with input filed and passing it with refrence */}
 
                 <input
+                    id="id"
                     ref={ref}
                     className={inputFieldClass}
                     type="text"
