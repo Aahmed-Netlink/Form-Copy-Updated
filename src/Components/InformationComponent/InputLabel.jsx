@@ -1,6 +1,6 @@
 import { forwardRef, } from "react";
 
-const InputLabel = forwardRef(({}, ref) => {
+const InputLabel = forwardRef(({ }, ref) => {
 
     const inputFieldClass = "border-[0.2rem] rounded-md border-sky-100 h-12 shadow-lg shadow-rose-200 px-2 w-[20rem] text-stone-600 focus:outline-none focus:border-yellow-400";
 

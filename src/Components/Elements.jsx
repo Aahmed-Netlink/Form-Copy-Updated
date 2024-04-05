@@ -14,14 +14,19 @@ const Elements = ({ item, dropable }) => {
             }
         },
         collect: (moniter) => ({
-            isDragging: !!moniter.isDragging(),
+            opacity: moniter.isDragging() ? 0 : 1,
+            isDragging: !!moniter.getItem(),
         })
     }), [],)
+
+    console.log(dropable)
 
     return (
         <>
             <li ref={drag}>
-                {item}
+                {
+                    item.componentType
+                }
             </li>
         </>
     )

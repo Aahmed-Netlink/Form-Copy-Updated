@@ -1,12 +1,14 @@
 import { forwardRef } from 'react'
 import { useDrop } from 'react-dnd'
-
 //? Component For Making A Dropalbe Area For Dragable Items
 const BackDrop = forwardRef(({ dropable }, ref) => {
 
     const [{ isOver, canDrop }, drop] = useDrop(() => ({
         accept: 'element',
         drop: () => (ref.current.open()),
+        // hover: (item, monitor) => {
+        //     console.log(item)
+        // },
         collect: (moniter) => (
             {
                 isOver: !!moniter.isOver(),
@@ -14,21 +16,27 @@ const BackDrop = forwardRef(({ dropable }, ref) => {
             }
         )
     }))
+
+
     return (
         <>
-            <div className=" text-center w-10/12 rounded-r-xl px-8 py-16 bg-[#008F8C] overflow-scroll" ref={drop}>
-                <h2 className='mb-8 font-bold uppercase md:text-xl text-stone-200 font-sans'>
+            <div className=" text-center w-10/12 rounded-xl px-8 py-16 bg-stone-400 border-stone-600 border-2 overflow-scroll no-scrollbar" ref={drop}>
+                <h2 className='mb-8 font-bold uppercase md:text-xl font-sans'>
                     BackDrop
                 </h2>
-                <p className="text-stone-200 mb-4 text-3xl">Drag An Element To Get Started<sup className='text-red-600 text-3xl'>*</sup></p>
+                {dropable.length == 0 ? <p className=" mb-4 text-3xl">Drag An Element To Get Started<sup className='text-red-600 text-3xl'>*</sup></p> : ""}
                 <form>
                     <ul className='flex flex-col gap-2 items-center'>
-                        {dropable.itemList.map((item ,i) => (
+                        {dropable.map((item, i) => (
                             <ul key={i} className=' inline-flex '>
                                 <label className='whitespace-pre text-xl font-semibold capitalize text-slate-900'>
-                                    {dropable.label[i]}{"  "}
+                                    {item.componentLabel}{"  "}
                                 </label>
-                                <>{item}</>
+                                {
+                                    item.componentType === "input" ? <input placeholder={item.placeholder} /> :
+                                        item.componentType === "button" ? <button className='bg-blue-500 rounded-lg py-2 px-6 font-bold capitalize'>{item.placeholder}</button> :
+                                            item.componentType === "textarea" ? <textarea placeholder={item.placeholder}></textarea> : ""
+                                }
                             </ul>
                         ))
                         }
